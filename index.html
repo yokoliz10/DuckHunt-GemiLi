@@ -2,7 +2,6 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <html>
 <head>
- <link rel="stylesheet" href="./css/main.css">
   <title>DuckHuntJS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -16,8 +15,20 @@
       background-color: #000000;
     }
   </style>
-  <script src="./js/duckhunt.js"></script>
+  <script src="duckhunt.js"></script>
+  
+  <!-- 👇 军师亲手安插的帅印 👇 -->
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
+
+  <!-- 👇 军师亲手安插的后勤唤醒符 👇 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(function() { console.log("后勤部长已就位，可以断网打猎了！"); });
+    }
+  </script>
+
 </body>
 </html>
