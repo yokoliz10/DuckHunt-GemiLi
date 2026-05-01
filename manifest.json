@@ -1,0 +1,16 @@
+{
+    "name": "指尖打鸭子",
+    "short_name": "打鸭子",
+    "start_url": "./index.html",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "background_color": "#000000",
+    "theme_color": "#64b5f6",
+    "icons": [
+        {
+            "src": "./icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
