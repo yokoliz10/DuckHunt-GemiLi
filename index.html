@@ -1,34 +1,26 @@
-<!DOCTYPE HTML>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <title>DuckHuntJS</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="description" content="An open source, web based, responsive implementation of Duck Hunt in canvas or webgl depending on your client.">
-  <meta name="author" content="Matt Surabian">
-  <style>
-    body {
-      overflow:hidden;
-      margin: 0;
-      padding: 0;
-      background-color: #000000;
-    }
-  </style>
-  <script src="duckhunt.js"></script>
-  
-  <!-- 👇 军师亲手安插的帅印 👇 -->
-  <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GemiLi的打鸭子</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
+        /* 空间传送门，消灭一切白边 */
+        iframe { width: 100vw; height: 100vh; border: none; display: block; }
+    </style>
 </head>
 <body>
-
-  <!-- 👇 军师亲手安插的后勤唤醒符 👇 -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(function() { console.log("后勤部长已就位，可以断网打猎了！"); });
-    }
-  </script>
-
+    <!-- 乾坤大挪移：直接把官方活着的服务器画面“偷”进咱们的 App 里 -->
+    <iframe src="https://duckhuntjs.com/"></iframe>
+    
+    <script>
+        // 唤醒您的后勤部长
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log("GemiLi的 PWA 外壳启动成功！"));
+        }
+    </script>
 </body>
 </html>
