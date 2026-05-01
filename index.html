@@ -2,10 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 👇 苹果专属咒语：viewport-fit=cover 解决刘海屏黑边，禁止缩放 👇 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- 状态栏背景设为纯黑，完美融入上下黑边 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>GemiLi的打鸭子</title>
     
     <link rel="manifest" href="manifest.json">
@@ -14,51 +14,47 @@
         body, html { 
             margin: 0; padding: 0; 
             width: 100%; height: 100%; 
-            overflow: hidden; background-color: #000; 
-            touch-action: none; /* 阻止 iOS 默认的滑动回弹 */
+            overflow: hidden; 
+            background-color: #000; /* 大背景纯黑，充当上下黑边 */
+            touch-action: none;
         }
         
-        /* 空间魔法阵：用来装 iframe 的容器 */
         .magic-box {
             position: absolute;
             top: 50%;
             left: 50%;
         }
 
-        /* ⚔️ 核心绝杀：如果手机是竖屏拿的，强行把画面旋转 90 度铺满！ ⚔️ */
+        /* ⚔️ 16:9 现代宽屏魔法：留出顶部空间给电量和时间 ⚔️ */
         @media screen and (orientation: portrait) {
             .magic-box {
-                width: 100vh; /* 宽度变成屏幕的高度 */
-                height: 100vw; /* 高度变成屏幕的宽度 */
+                width: 177.77vw; /* 核心修改：16:9 比例 (100 * 16/9 = 177.77) */
+                height: 100vw;   /* 占满手机物理宽度 */
                 transform: translate(-50%, -50%) rotate(90deg);
             }
         }
 
-        /* 如果手机本来就是横屏拿的，正常铺满！ */
+        /* 如果朋友本身就是横屏拿手机，正常 16:9 居中显示 */
         @media screen and (orientation: landscape) {
             .magic-box {
-                width: 100vw;
+                width: 177.77vh; 
                 height: 100vh;
                 transform: translate(-50%, -50%) rotate(0deg);
             }
         }
 
-        /* 传送门满血展开 */
         iframe { width: 100%; height: 100%; border: none; display: block; }
     </style>
 </head>
 <body>
 
-    <!-- 乾坤大挪移包裹在魔法阵中 -->
     <div class="magic-box">
         <iframe src="https://duckhuntjs.com/"></iframe>
     </div>
     
     <script>
-        // 唤醒您的后勤部长
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log("GemiLi的霸道横屏魔法启动成功！"));
+            navigator.serviceWorker.register('sw.js');
         }
     </script>
 </body>
