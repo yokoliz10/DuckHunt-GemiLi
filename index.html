@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- 状态栏背景设为纯黑，完美融入上下黑边 -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- 状态栏改为沉浸式半透明 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>GemiLi的打鸭子</title>
     
     <link rel="manifest" href="manifest.json">
@@ -15,7 +15,7 @@
             margin: 0; padding: 0; 
             width: 100%; height: 100%; 
             overflow: hidden; 
-            background-color: #000; /* 大背景纯黑，充当上下黑边 */
+            background-color: #5ea8ff; /* 换成天空蓝打底，消除所有黑边违和感 */
             touch-action: none;
         }
         
@@ -25,19 +25,18 @@
             left: 50%;
         }
 
-        /* ⚔️ 16:9 现代宽屏魔法：留出顶部空间给电量和时间 ⚔️ */
+        /* ⚔️ 霸道全屏：一点缝隙都不留！ ⚔️ */
         @media screen and (orientation: portrait) {
             .magic-box {
-                width: 177.77vw; /* 核心修改：16:9 比例 (100 * 16/9 = 177.77) */
-                height: 100vw;   /* 占满手机物理宽度 */
+                width: 100vh; /* 撑爆屏幕高度 */
+                height: 100vw; /* 撑爆屏幕宽度 */
                 transform: translate(-50%, -50%) rotate(90deg);
             }
         }
 
-        /* 如果朋友本身就是横屏拿手机，正常 16:9 居中显示 */
         @media screen and (orientation: landscape) {
             .magic-box {
-                width: 177.77vh; 
+                width: 100vw;
                 height: 100vh;
                 transform: translate(-50%, -50%) rotate(0deg);
             }
